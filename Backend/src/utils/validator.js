@@ -16,11 +16,15 @@ exports.validate = (validations) => {
   };
 };
 
-exports.signupValidator = [
-  body("name").notEmpty().withMessage("Name is required"),
+exports.loginValidator = [
   body("email").trim().isEmail().withMessage("It is not a valid email"),
   body("password")
     .trim()
     .isLength({ min: 6 })
     .withMessage("Password should contain atleast 6 characters"),
+];
+
+exports.signupValidator = [
+  body("name").notEmpty().withMessage("Name is required"),
+  ...this.loginValidator,
 ];

@@ -4,7 +4,8 @@ import React from "react";
 function CustomizeInput(props) {
   return (
     <TextField
-    margin="normal"
+      margin="normal"
+      required
       InputLabelProps={{ style: { color: "black" } }}
       name={props.name}
       label={props.label}

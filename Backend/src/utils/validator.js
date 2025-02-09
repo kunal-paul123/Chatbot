@@ -28,3 +28,7 @@ exports.signupValidator = [
   body("name").notEmpty().withMessage("Name is required"),
   ...this.loginValidator,
 ];
+
+exports.chatCompletionValidator = [
+  body("message").notEmpty().withMessage("Message is required"),
+];

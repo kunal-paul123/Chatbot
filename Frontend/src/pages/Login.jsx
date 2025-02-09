@@ -1,8 +1,30 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import CustomizeInput from "../components/CustomizeInput";
+import { useAuth } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 function Login() {
+  const auth = useAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    try {
+      await auth.login(email, password);
+      toast.success("Login Successful");
+    } catch (error) {
+      console.log(error); 
+
+      toast.error("Login Failed");
+    }
+  };
+
   return (
     <Box width={"100%"} height={"100%"} display={"flex"} flex={"1"}>
       <Box
@@ -20,6 +42,7 @@ function Login() {
         mt={"auto"}
       >
         <form
+          onSubmit={handleSubmit}
           style={{
             margin: "auto",
             padding: "30px",
@@ -41,6 +64,7 @@ function Login() {
               padding={2}
               fontWeight={600}
               color={"black"}
+              fontSize={"22px"}
             >
               Login
             </Typography>
@@ -56,7 +80,7 @@ function Login() {
                 borderRadius: 2,
                 bgcolor: "#000",
                 color: "white",
-                fontWeight:"350"
+                fontWeight: "350",
               }}
             >
               Login

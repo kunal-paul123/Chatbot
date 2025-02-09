@@ -2,7 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #ffffffcf;
+  background: hsla(0, 0%, 100%, 0.736);
   color: #000;
   font-family: "Roboto Slab";
 }
